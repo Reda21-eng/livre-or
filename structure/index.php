@@ -1,4 +1,4 @@
-<?php include 'db.php'; ?>
+<?php include '../bdd/db.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,13 +13,15 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="livre-or.php">Livre d'Or</a></li>
+                <li><a href="http://localhost/livre-or/authentification/inscription.php">S'inscrire</a></li>
+                <li><a href="http://localhost/livre-or/authentification/connexion.php">Se connecter</a></li>
                 <?php
                 if(isset($_SESSION['user'])) {
                     echo("<li><form method='post' action='deconnexion.php'><button name='deconnexion' type='submit'>déconnexion</button></form></li>");
                 } else {
                     echo("
-                    <li><a href='inscription.php'>S'inscrire</a></li>
-                    <li><a href='connexion.php'>Se connecter</a></li>
+                    <li><a href=></a></li>
+                    <li><a href=></a></li>
                     ");
                 }
                 ?>
