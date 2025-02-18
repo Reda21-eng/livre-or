@@ -1,4 +1,4 @@
-<?php include 'db.php'; ?>
+<?php include '../bdd/db.php'; ?>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
