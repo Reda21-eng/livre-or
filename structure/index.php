@@ -18,8 +18,8 @@
                     echo("<li><form method='post' action='deconnexion.php'><button name='deconnexion' type='submit'>déconnexion</button></form></li>");
                 } else {
                     echo("
-                    <li><a href='inscription.php'>S'inscrire</a></li>
-                    <li><a href='connexion.php'>Se connecter</a></li>
+                    <li><a href=../authentification/inscription.php'>S'inscrire</a></li>
+                    <li><a href='../authentification/connexion.php'>Se connecter</a></li>
                     ");
                 }
                 ?>
