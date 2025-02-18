@@ -38,7 +38,7 @@ $comments = $stmt->fetchAll();
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="livre-or.php">Livre d'Or</a></li>
-                <li> <a href=< href="http://localhost/livre-or/authentification/inscription.php">S'inscrire</li>
+                <li> <a href="http://localhost/livre-or/authentification/inscription.php">S'inscrire</li>
                 <li> <a href="http://localhost/livre-or/authentification/connexion.php">Se connecter</a></li>
                 
                 <?php
@@ -46,8 +46,7 @@ $comments = $stmt->fetchAll();
                     echo("<li><form method='post' action='deconnexion.php'><button name='deconnexion' type='submit'>déconnexion</button></form></li>");
                 } else {
                     echo("
-                    <li><a href='inscription.php'>S'inscrire</a></li>
-                    <li><a href='connexion.php'>Se connecter</a></li>
+                    
                     ");
                 }
                 ?>
