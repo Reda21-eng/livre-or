@@ -1,4 +1,4 @@
-<?php include 'db.php'; ?>
+<?php include '../bdd/db.php'; ?>
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
