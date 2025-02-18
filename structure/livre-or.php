@@ -1,5 +1,5 @@
 <?php 
-include_once 'db.php'; // Assurez-vous que db.php définit correctement $pdo
+include_once '../bdd/db.php'; // Assurez-vous que db.php définit correctement $pdo
 session_start();
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 5;
