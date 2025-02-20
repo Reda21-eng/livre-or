@@ -2,7 +2,6 @@
 
 include_once '../bdd/db.php'; // Assurez-vous que db.php définit correctement $pdo
 session_start();
-var_dump($_POST);
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 5;
 $offset = ($page - 1) * $limit;
