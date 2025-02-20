@@ -1,7 +1,8 @@
 <?php 
+
 include_once '../bdd/db.php'; // Assurez-vous que db.php définit correctement $pdo
 session_start();
-
+var_dump($_POST);
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 5;
 $offset = ($page - 1) * $limit;
@@ -9,6 +10,29 @@ $offset = ($page - 1) * $limit;
 // Vérification de la connexion PDO
 if (!isset($pdo)) {
     die("Erreur de connexion à la base de données.");
+}
+
+// Vérifier si un commentaire est soumis
+if (isset($_POST['comment']) && !empty($_POST['comment'])) {
+    // Vérifier si l'utilisateur est connecté
+    if (isset($_SESSION['user_id'])) {
+        $comment = htmlspecialchars($_POST['comment']);
+        $user_id = $_SESSION['user_id']; // Récupérer l'ID de l'utilisateur depuis la session
+
+        // Préparation de la requête d'insertion
+        $stmt = $pdo->prepare("INSERT INTO comment (comment, id_user, date) VALUES (:comment, :user_id, NOW())");
+        $stmt->bindParam(':comment', $comment);
+        $stmt->bindParam(':user_id', $user_id);
+
+        // Exécution de la requête
+        if ($stmt->execute()) {
+            echo "Commentaire ajouté avec succès.";
+        } else {
+            echo "Erreur lors de l'ajout du commentaire.";
+        }
+    } else {
+        echo "Vous devez être connecté pour ajouter un commentaire.";
+    }
 }
 
 // Récupération du nombre total de commentaires
@@ -27,6 +51,7 @@ $comments = $stmt->fetchAll();
 if(isset($_POST['deconnexion'])) {
     session_destroy();
     header('Location: ../../index.php');
+    exit(); // Assurez-vous de terminer le script après une redirection
 }
 
 ?>
@@ -55,7 +80,6 @@ if(isset($_POST['deconnexion'])) {
                     ");
                 }
                 ?>
-
             </ul>
         </nav>
     </header>
@@ -86,6 +110,16 @@ if(isset($_POST['deconnexion'])) {
                 <span>Suivant</span>
             <?php endif; ?>
         </div>
+
+        <?php if (isset($_SESSION['user_id'])): ?>
+
+            <form method="POST">
+                
+             
+            </form>
+        <?php else: ?>
+            <p>Vous devez <a href="connexion.php">vous connecter</a> pour ajouter un commentaire.</p>
+        <?php endif; ?>
     </main>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<?php include '../bdd/db.php'; ?>
-<?php
+<?php include '../bdd/db.php'; 
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST['login'];
@@ -8,6 +7,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare("SELECT * FROM user WHERE login = ?");
     $stmt->execute([$login]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+  // Après avoir vérifié les identifiants de l'utilisateur
+    $_SESSION['user_id'] = $user['id']; // Stocker l'ID de l'utilisateur dans la session
+    $_SESSION['user'] = $user['username']; // Stocker le nom d'utilisateur dans la session
+
+
     
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user'] = $user;
@@ -56,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" name="password" id="password" required>
 
             <button type="submit">Se connecter</button>
-        </form>
+      
     </main>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../bdd/db.db.php';
+include '../bdd/db.php';
 
 if (!isset($_SESSION['user_id'])) {
     header("Location: connexion.php");
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un commentaire</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <header>
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </header>
 
     <main>
-        <h1>Ajouter un commentaire</h1>
+    <h1>Ajouter un commentaire</h1>
         <form method="POST">
             <label for="comment">Votre commentaire :</label>
             <textarea name="comment" id="comment" required></textarea>

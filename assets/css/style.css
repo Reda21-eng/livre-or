@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: red;
+    background-color:rgb(123, 36, 36);
     color: white;
     padding: 10px;
     text-align: center;
@@ -63,3 +63,14 @@ h1 {
         margin: 5px 0;
     }
 }
+.image-container {
+    display: flex;
+    justify-content: center; /* Centre les images horizontalement */
+    gap: 10px; /* Espace entre les images */
+}
+
+.image-container img {
+    max-width: 45%; /* Ajuste la taille des images */
+    height: auto;
+}
+
